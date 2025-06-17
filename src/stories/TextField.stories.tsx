@@ -6,7 +6,7 @@ import TextField from "@/components/TextField/TextField";
 import styled from "@emotion/styled";
 
 const meta = {
-  title: "Components/TextField",
+  title: "Components/Input Components/TextField",
   component: TextField,
   parameters: {
     layout: "padded",

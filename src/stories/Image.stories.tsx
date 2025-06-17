@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Image, { ImageErrorFallback, ThreeDots } from "@/components/Image";
 
 const meta = {
-  title: "Components/Image",
+  title: "Components/Media Components/Image",
   component: Image,
   parameters: {
     layout: "centered",

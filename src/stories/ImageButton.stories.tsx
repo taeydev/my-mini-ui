@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ImageButton from "@/components/Button/ImageButton";
+import Image from "@/components/Image";
 
 const meta = {
-  title: "Components/ImageButton",
+  title: "Components/Input Components/ImageButton",
   component: ImageButton,
   parameters: {
     layout: "centered",
@@ -38,7 +39,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    image: "/assets/youtube.svg",
+    image: <Image src="/assets/youtube.svg" alt="Youtube Icon" width="30px" height="30px" />,
     alt: "Youtube Icon",
     onClick: () => alert("Button clicked!"),
     width: "30px",
@@ -48,7 +49,7 @@ export const Default: Story = {
 
 export const CustomSize: Story = {
   args: {
-    image: "/assets/youtube.svg",
+    image: <Image src="/assets/youtube.svg" alt="Youtube Icon" width="50px" height="50px" />,
     alt: "Youtube Icon",
     onClick: () => alert("Button clicked!"),
     width: "50px",

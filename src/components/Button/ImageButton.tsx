@@ -1,8 +1,8 @@
-import Image from "../Image";
 import { Button } from "./ImageButton.styles";
+import React from "react";
 
 export interface ImageButtonProps {
-  image: string;
+  image: React.ReactNode;
   alt: string;
   onClick: () => void;
   width?: string;
@@ -24,8 +24,9 @@ const ImageButton = ({
       width={width}
       height={height}
       className={className}
+      aria-label={alt}
     >
-      <Image src={image} alt={alt} width={width} height={width} />
+      {image}
     </Button>
   );
 };

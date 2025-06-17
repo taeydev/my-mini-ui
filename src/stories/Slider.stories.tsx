@@ -5,7 +5,7 @@ import Slider, { IndicatorInfo } from "@/components/Slider/Slider";
 import "./slider.css";
 
 const meta = {
-  title: "Components/Slider",
+  title: "Components/Input Components/Slider",
   component: Slider,
   parameters: {
     layout: "centered",

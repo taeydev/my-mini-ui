@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Carousel from "@/components/Carousel/Carousel";
 
 const meta = {
-  title: "Components/Carousel",
+  title: "Components/Media Components/Carousel",
   component: Carousel,
   parameters: {
     layout: "centered",

@@ -31,7 +31,7 @@
 
 이 라이브러리는 기본적이고 유용한 컴포넌트를 제공합니다. 각 컴포넌트는 사용하기 쉽고, 필요에 따라 커스터마이징 가능합니다.
 
-<div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px;">
+
 
 ### 1️⃣ Button 컴포넌트
 
@@ -146,7 +146,39 @@
 />
 ```
 
-### 5️⃣ Menu 컴포넌트
+### 5️⃣ Dropdown 컴포넌트
+
+`Dropdown` 컴포넌트는 옵션 리스트에서 하나를 선택할 수 있는 드롭다운 UI를 제공합니다. 다양한 옵션, 플레이스홀더, 비활성화 상태, 스타일 변형(variant) 등을 지원합니다.
+
+#### Props
+
+| 이름         | 타입                              | 기본값      | 설명                                                      |
+| ------------ | --------------------------------- | ----------- | --------------------------------------------------------- |
+| `options`    | `{ value: string, label: string }[]` | -           | 드롭다운에 표시할 옵션 배열입니다.                         |
+| `value`      | `string`                          | `""`        | 현재 선택된 값입니다.                                     |
+| `onChange`   | `(value: string) => void`         | -           | 값이 변경될 때 호출되는 콜백 함수입니다.                  |
+| `placeholder`| `string`                          | `""`        | 선택 전 표시되는 플레이스홀더 텍스트입니다.                |
+| `variant`    | `"primary" \| "secondary" \| "light"`           | `"light"`   | 드롭다운의 스타일 변형을 지정합니다.                      |
+| `disabled`   | `boolean`                         | `false`      | 드롭다운을 비활성화합니다.                                |
+| `className`  | `string`                          | -           | 추가적인 스타일을 적용할 수 있는 클래스명입니다.           |
+
+#### 사용 예시
+
+```tsx
+<Dropdown
+  options={[
+    { value: "option1", label: "옵션 1" },
+    { value: "option2", label: "옵션 2" },
+    { value: "option3", label: "옵션 3" }
+  ]}
+  value={selected}
+  onChange={setSelected}
+  placeholder="옵션을 선택하세요"
+  variant="primary"
+/>
+```
+
+### 6️⃣ Menu 컴포넌트
 
 `Menu` 컴포넌트는 네비게이션 메뉴나 리스트 아이템을 제공하는 UI 컴포넌트입니다. `Menu.Item`을 활용하여 각 메뉴 항목을 정의하고, 스타일을 커스터마이징할 수 있습니다.
 
@@ -257,26 +289,36 @@ const CustomMenuItem = styled(Menu.Item)`
 `;
 ```
 
-### 6️⃣ ImageButton 컴포넌트
+### 7️⃣ ImageButton 컴포넌트
 
-`ImageButton` 컴포넌트는 이미지를 버튼처럼 클릭할 수 있는 요소로 변환합니다. 버튼을 클릭할 때 사용자 정의 `onClick` 핸들러를 호출하며, 이미지의 크기와 스타일을 자유롭게 설정할 수 있습니다.
+`ImageButton` 컴포넌트는 이미지나 아이콘을 버튼처럼 클릭할 수 있는 요소로 변환합니다. 버튼을 클릭할 때 사용자 정의 `onClick` 핸들러를 호출하며, 버튼의 크기와 스타일을 자유롭게 설정할 수 있습니다.
 
 #### Props
 
-| 이름        | 타입         | 기본값   | 설명                                                          |
-| ----------- | ------------ | -------- | ------------------------------------------------------------- |
-| `image`     | `string`     | -        | 버튼에 표시될 이미지의 경로입니다.                            |
-| `alt`       | `string`     | -        | 이미지의 대체 텍스트입니다.                                   |
-| `onClick`   | `() => void` | -        | 버튼이 클릭될 때 호출되는 콜백 함수입니다.                    |
-| `width`     | `string`     | `"30px"` | 버튼의 가로 크기를 설정합니다.                                |
-| `height`    | `string`     | `"30px"` | 버튼의 세로 크기를 설정합니다.                                |
-| `className` | `string`     | -        | 버튼의 스타일을 커스터마이즈할 수 있는 클래스명을 설정합니다. |
+| 이름        | 타입           | 기본값   | 설명                                                          |
+| ----------- | -------------- | -------- | ------------------------------------------------------------- |
+| `image`     | `ReactNode`    | -        | 버튼에 표시될 이미지나 아이콘 컴포넌트입니다.                |
+| `alt`       | `string`       | -        | 버튼의 접근성을 위한 대체 텍스트입니다.                      |
+| `onClick`   | `() => void`   | -        | 버튼이 클릭될 때 호출되는 콜백 함수입니다.                    |
+| `width`     | `string`       | `"30px"` | 버튼의 가로 크기를 설정합니다.                                |
+| `height`    | `string`       | `"30px"` | 버튼의 세로 크기를 설정합니다.                                |
+| `className` | `string`       | -        | 버튼의 스타일을 커스터마이즈할 수 있는 클래스명을 설정합니다. |
 
 #### 사용 예시
 
 ```tsx
+// Image 컴포넌트 사용
 <ImageButton
-  image="/assets/youtube.svg"
+  image={<Image src="/assets/youtube.svg" alt="YouTube Icon" width="40px" height="40px" />}
+  alt="YouTube Icon"
+  onClick={() => console.log("Button clicked")}
+  width="40px"
+  height="40px"
+/>
+
+// SVG 아이콘 컴포넌트 사용
+<ImageButton
+  image={<YouTubeIcon width="40px" height="40px" color="#FF0000" />}
   alt="YouTube Icon"
   onClick={() => console.log("Button clicked")}
   width="40px"
@@ -284,7 +326,7 @@ const CustomMenuItem = styled(Menu.Item)`
 />
 ```
 
-### 7️⃣ Slider 컴포넌트
+### 8️⃣ Slider 컴포넌트
 
 `Slider` 컴포넌트는 사용자가 값을 조정할 수 있는 슬라이더 UI를 제공합니다. 최소값, 최대값, 스텝(step) 단위를 설정할 수 있으며, 특정 값에 대한 인디케이터를 표시할 수 있습니다. 또한, 사용자 정의 `className`을 통해 스타일을 커스터마이징할 수 있습니다.
 
@@ -363,7 +405,7 @@ const CustomSlider = styled(Slider)`
 }
 ```
 
-### 8️⃣ Carousel 컴포넌트
+### 9️⃣ Carousel 컴포넌트
 
 `Carousel` 컴포넌트는 이미지를 슬라이드 방식으로 보여주는 UI를 제공합니다. 좌우 화살표 버튼을 클릭하여 슬라이드를 이동할 수 있으며, 드래그하여 슬라이드를 넘기는 기능도 지원합니다. 또한, 루프(loop) 기능을 활성화하여 슬라이드가 끝나면 처음으로 돌아가거나, 마지막 슬라이드에서 처음으로 넘어갈 수 있습니다.
 
@@ -405,3 +447,40 @@ interface SlideInfo {
   slideHeight={400}
 />
 ```
+
+### 1️⃣0️⃣ Modal 컴포넌트
+
+`Modal` 컴포넌트는 오버레이 위에 표시되는 팝업 UI로, 사용자에게 중요한 메시지, 폼, 경고 등을 표시할 때 사용합니다. 제목, 본문, 푸터, 닫기 버튼, 커스텀 너비 등을 지원합니다.
+
+#### Props
+
+| 이름        | 타입                | 기본값    | 설명                                                      |
+| ----------- | ------------------- | --------- | --------------------------------------------------------- |
+| `isOpen`    | `boolean`           | -         | 모달의 열림/닫힘 상태를 제어합니다.                       |
+| `onClose`   | `() => void`        | -         | 모달을 닫을 때 호출되는 콜백 함수입니다.                  |
+| `title`     | `string`            | -         | 모달 상단에 표시할 제목입니다.                             |
+| `children`  | `React.ReactNode`   | -         | 모달 본문에 표시할 콘텐츠입니다.                           |
+| `footer`    | `React.ReactNode`   | -         | 모달 하단에 표시할 푸터(버튼 등) 영역입니다.               |
+| `className` | `string`            | -         | 추가적인 스타일을 적용할 수 있는 클래스명입니다.           |
+| `width`     | `string`            | `"500px"` | 모달의 너비를 지정합니다.                                 |
+
+#### 사용 예시
+
+```tsx
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  title="모달 제목"
+  width="400px"
+  footer={
+    <>
+      <Button variant="light" onClick={handleClose}>취소</Button>
+      <Button variant="primary">확인</Button>
+    </>
+  }
+>
+  <p>여기에 모달 내용을 입력하세요.</p>
+</Modal>
+```
+
+---

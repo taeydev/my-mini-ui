@@ -6,7 +6,7 @@ import { useState } from "react";
 import styled from "@emotion/styled";
 
 const meta = {
-  title: "Components/Menu",
+  title: "Components/Navigation Components/Menu",
   component: Menu,
   tags: ["autodocs"],
   argTypes: {

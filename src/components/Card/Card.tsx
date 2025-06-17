@@ -1,3 +1,4 @@
+import PictureIcon from "@/icons/PictureIcon";
 import {
   CardContent,
   Container,
@@ -5,6 +6,7 @@ import {
   Title,
   Description,
 } from "./Card.styles";
+import { colors } from "@/styles/designSystem";
 
 export interface CardProps {
   image?: React.ReactNode;
@@ -32,7 +34,26 @@ const Card = ({
       width={width}
       height={height}
     >
-      <ImageContainer>{image}</ImageContainer>
+      <ImageContainer>
+        {image ? (
+          image
+        ) : (
+          <div style={{ 
+            width: '100%', 
+            height: '100%', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center' 
+          }}>
+            <PictureIcon 
+              width="38px" 
+              height="38px" 
+              color={colors.gray[400]} 
+              style={{ width: '38px', height: '38px' }}
+            />
+          </div>
+        )}
+      </ImageContainer>
       <CardContent>
         <Title width={width}>{title}</Title>
         {description && <Description width={width}>{description}</Description>}
